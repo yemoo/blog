@@ -4,9 +4,9 @@
 
 # Site
 title: 网者归来
-subtitle: 闫威的博客
+subtitle: 闫威的个人博客
 description: 闫威的个人博客
-author: yemoo
+author: 闫威
 language: zh-CN
 timezone:
 
@@ -14,7 +14,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://ajaxbbs.net/blog
 root: /blog/
-permalink: :year/:month/:day/:title/
+permalink: :year/:month/:day/:title.html
 permalink_defaults:
 
 # Directory
@@ -28,15 +28,16 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
+auto_spacing: true
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
-relative_link: false
-future: true
+relative_link: true
+future: false
 highlight:
   enable: true
   line_number: true
@@ -71,3 +72,13 @@ stylus:
 deploy:
   type: git
   repo: https://yemoo@github.com/yemoo/blog.git
+
+
+
+# Plugins
+
+baidusitemap:
+    path: baidusitemap.xml
+
+html_minifier:
+  exclude: 
