@@ -4,10 +4,11 @@
 
 # Site
 title: 网者归来
+avatar: /blog/img/head.png
 subtitle: 闫威的个人博客
 description: 闫威的个人博客
 author: 闫威
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -63,13 +64,17 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: jacman
+theme: next
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://yemoo@github.com/yemoo/blog.git
+  repo: git@github.com:yemoo/blog.git
 
 html_minifier:
   exclude:
+
+duoshuo_shortname: yemoo
+duoshuo_hotartical: true
+jiathis: true
