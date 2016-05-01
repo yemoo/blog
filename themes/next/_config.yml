@@ -30,6 +30,7 @@ menu:
   archives: /archives
   tags: /tags
   about: /about
+  projects: /projects
   #commonweal: /404.html
 
 
@@ -46,6 +47,7 @@ menu_icons:
   categories: th
   tags: tags
   archives: archive
+  projects: heart
   commonweal: heartbeat
 
 
