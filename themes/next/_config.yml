@@ -28,9 +28,10 @@ menu:
   home: /
   categories: /categories
   archives: /archives
-  tags: /tags
+  #tags: /tags
   about: /about
   projects: /projects
+  resources: /resources
   #commonweal: /404.html
 
 
@@ -48,6 +49,7 @@ menu_icons:
   tags: tags
   archives: archive
   projects: heart
+  resources: list-ul
   commonweal: heartbeat
 
 
