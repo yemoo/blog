@@ -39,7 +39,16 @@ $(document).ready(function () {
 
   // Bootstrap Motion.
   CONFIG.motion && NexT.motion.integrator.bootstrap();
-  !CONFIG.motion && NexT.motion.middleWares.sidebar();
+
+  if(!CONFIG.motion){
+    var $tocContent = $('.post-toc-content');
+
+    if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        NexT.utils.displaySidebar();
+      }
+    }
+ }
 
   $(document).trigger('bootstrap:after');
 });
