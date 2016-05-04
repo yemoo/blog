@@ -1,1 +1,51 @@
 // Custom styles.
+body{
+    font-family: "Helvetica Neue",Helvetica,"Segoe UI","PingHei","STHeiti","Microsoft YaHei",Arial,Verdana,sans-serif
+}
+.sidebar-nav{
+    border-bottom: 1px dashed #333;
+}
+.post-toc .nav .nav-child{
+    display: block
+}
+
+.post-body ul li p{
+    margin-bottom: 0;
+}
+
+.highlight{
+    border: 1px dashed #ccc;
+}
+
+hr{
+    background-image: none;
+}
+
+.comments{
+    margin-top: 20px;
+}
+
+.post-toc ol{
+    padding-left: 16px;
+}
+
+.post-body {
+    h2:before, h3:before, h4:before{
+        color: #888;
+        font-weight: 200;
+    }
+    h2 {
+        counter-increment: header2;
+        counter-reset: header3;
+    }
+    h2:before {
+        content: counter(header2)". ";
+    }
+    h3 {
+        counter-increment: header3;
+        counter-reset: header4;
+    }
+    h3:before {
+        content: counter(header2)"." counter(header3)" ";
+    }
+}

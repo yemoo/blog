@@ -39,6 +39,7 @@ $(document).ready(function () {
 
   // Bootstrap Motion.
   CONFIG.motion && NexT.motion.integrator.bootstrap();
+  !CONFIG.motion && NexT.motion.middleWares.sidebar();
 
   $(document).trigger('bootstrap:after');
 });

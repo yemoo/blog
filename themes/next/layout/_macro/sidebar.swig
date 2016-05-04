@@ -50,10 +50,12 @@
 
           {% if site.tags.length > 0 %}
             <div class="site-state-item site-state-tags">
-              {% if theme.menu.tags %}<a href="{{ url_for(theme.menu.tags) }}">{% endif %}
+             <!--  {% if theme.menu.tags %}<a href="{{ url_for(theme.menu.tags) }}">{% endif %} -->
+                <a href="{{ url_for('/tags') }}">
                 <span class="site-state-item-count">{{ site.tags.length }}</span>
                 <span class="site-state-item-name">{{ __('state.tags') }}</span>
-              {% if theme.menu.tags %}</a>{% endif %}
+                </a>
+              <!-- {% if theme.menu.tags %}</a>{% endif %} -->
             </div>
           {% endif %}
 

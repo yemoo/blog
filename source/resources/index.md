@@ -29,3 +29,4 @@ date: 2016-05-03 18:19:06
 
 # 其它项目资源
 - [RAP](http://rap.taobao.org/org/index.do) 可视化接口管理工具(阿里)
+- [Next](http://theme-next.iissnan.com/) hexo优质主题（需翻墙访问）
