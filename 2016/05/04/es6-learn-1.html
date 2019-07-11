@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/blog/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/blog/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/blog/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+  <meta name="description" content="ECMAScript 与 JavaScript JavaScript 最早由 Netscape 公司在1995年创造并成功用于 Netscape Navigator 2.0。 1996年11月，Netscape 公司决定将 JavaScript 提交给国际标准化组织 ECMA 并希望其成为国际标准。 1997年，ECMA 发布262号标准文件（ECMA-262）的第一版，即 ECMAScript">
+<meta name="keywords" content="es6,js,ecmascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记(1)：了解和认识 ES6">
+<meta property="og:url" content="http://ajaxbbs.net/blog/2016/05/04/es6-learn-1.html">
+<meta property="og:site_name" content="网者归来">
+<meta property="og:description" content="ECMAScript 与 JavaScript JavaScript 最早由 Netscape 公司在1995年创造并成功用于 Netscape Navigator 2.0。 1996年11月，Netscape 公司决定将 JavaScript 提交给国际标准化组织 ECMA 并希望其成为国际标准。 1997年，ECMA 发布262号标准文件（ECMA-262）的第一版，即 ECMAScript">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-11T02:31:28.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记(1)：了解和认识 ES6">
+<meta name="twitter:description" content="ECMAScript 与 JavaScript JavaScript 最早由 Netscape 公司在1995年创造并成功用于 Netscape Navigator 2.0。 1996年11月，Netscape 公司决定将 JavaScript 提交给国际标准化组织 ECMA 并希望其成为国际标准。 1997年，ECMA 发布262号标准文件（ECMA-262）的第一版，即 ECMAScript">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://ajaxbbs.net/blog/2016/05/04/es6-learn-1">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ES6学习笔记(1)：了解和认识 ES6 | 网者归来</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">网者归来</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">you can do what you think!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-projects">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/projects/" rel="section"><i class="menu-item-icon fa fa-fw fa-heart"></i> <br>项目</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resources">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/resources/" rel="section"><i class="menu-item-icon fa fa-fw fa-list-ul"></i> <br>资源</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ajaxbbs.net/blog/blog/2016/05/04/es6-learn-1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="闫威">
+      <meta itemprop="description" content="没事瞎写写">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="网者归来">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习笔记(1)：了解和认识 ES6
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-04 16:21:40" itemprop="dateCreated datePublished" datetime="2016-05-04T16:21:40+08:00">2016-05-04</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-11 10:31:28" itemprop="dateModified" datetime="2019-07-11T10:31:28+08:00">2019-07-11</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ECMAScript-与-JavaScript"><a href="#ECMAScript-与-JavaScript" class="headerlink" title="ECMAScript 与 JavaScript"></a>ECMAScript 与 JavaScript</h2><ul>
+<li>JavaScript 最早由 Netscape 公司在1995年创造并成功用于 Netscape Navigator 2.0。</li>
+<li>1996年11月，Netscape 公司决定将 JavaScript 提交给国际标准化组织 <a href="http://baike.baidu.com/link?url=JnLcpQwcB5zTw20RqYdcCiGQ_ABR5vlvmfXnyMXa8GIU475aDHBmtTBS7gvbkuu9AlFY-M4E-1KMNzhwymPgZq" target="_blank" rel="noopener">ECMA</a> 并希望其成为国际标准。</li>
+<li>1997年，ECMA 发布262号标准文件（ECMA-262）的第一版，即 ECMAScript 1.0。</li>
+<li>之所以叫做 ECMAScript：<ul>
+<li>Java 是 Sun 公司的商标，只授权了 Netscape 公司使用 JavaScript。</li>
+<li>体现制定者是 ECMA 组织，保证语言的开放性和中立性。</li>
+</ul>
+</li>
+<li>ECMAScript 是语言标准，并不提供具体实现。JavaScript 是 ECMAScript 的一种具体实现。除此之外还有 JScript，ActionScript 等实现。</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="ECMAScript-简要历史"><a href="#ECMAScript-简要历史" class="headerlink" title="ECMAScript 简要历史"></a>ECMAScript 简要历史</h2><ol>
+<li>1997年6月，发布 ECMAScript 1.0。</li>
+<li>1998年6月，发布 ECMAScript 2.0。</li>
+<li>1999年12月，发布 ECMAScript 3.0。</li>
+<li>2000年-2008年7月，ECMAScript 4.0经历着不断的讨论和调整，最终因为部分改动过于激进，导致标准委员会成员不能统一而终止开发。将一些小的改动发布为 ECMAScript 3.1；另外一些设想最终放到了以后的版本计划（Harmony）中。</li>
+<li>2009年12月，发布了 ECMASCript 5.0，该版本基于 ECMAScript 3.1 发布。</li>
+<li>2011年6月，发布 ECMAScript 5.1，并确立为ISO国际标准（ISO/IEC 16262:2011）。</li>
+<li>2015年6月，发布 ECMAScript 6.0，并成为国际标准（2013年12月发布草案）。</li>
+</ol>
+<h2 id="支持情况"><a href="#支持情况" class="headerlink" title="支持情况"></a>支持情况</h2><ul>
+<li>各平台对 ES6 语法的详细支持情况可以查看：<a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es6/</a> （需翻墙访问）</li>
+<li>访问 <a href="http://ruanyf.github.io/es-checker/" target="_blank" rel="noopener">http://ruanyf.github.io/es-checker/</a> 查看您的浏览器当前支持情况。</li>
+<li>安装 <a href="https://github.com/ruanyf/es-checker" target="_blank" rel="noopener">ES-Checker</a> 模块可查看你的 node 版本支持情况。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g es-checker</span><br><span class="line">es-checker</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="ES6相关应用工具"><a href="#ES6相关应用工具" class="headerlink" title="ES6相关应用工具"></a>ES6相关应用工具</h2><ul>
+<li><a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a> ：目前最被广泛使用的 ES6 转换工具<br>可与各种构建系统、开发测试框架、编辑调试工具等集成使用。具体可查看 <a href="https://babeljs.io/docs/setup/" target="_blank" rel="noopener">https://babeljs.io/docs/setup/</a> 。  </li>
+</ul>
+<p><strong>Babel 内置转换工具使用说明：</strong>  </p>
+<ul>
+<li><p>在项目目录安装 babel-cli 依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev babel-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>package.json</code> 文件中增加构建命令：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;my-project&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">+   &quot;scripts&quot;: &#123;</span><br><span class="line">+     &quot;build&quot;: &quot;babel src -d lib&quot;</span><br><span class="line">+   &#125;,</span><br><span class="line">    &quot;devDependencies&quot;: &#123;</span><br><span class="line">      &quot;babel-cli&quot;: &quot;^6.0.0&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后运行 <code>npm run build</code> 将把 src 目录下的 ES6 脚本转换后生成到 lib 目录中。</p>
+</li>
+<li><p>NOTE：babel 默认并不带任何转换程序，需要使用者自己配置使用何种转换器。</p>
+</li>
+<li><p>安装 ES6 转换器：<a href="https://babeljs.io/docs/plugins/preset-es2015/" target="_blank" rel="noopener">ES2015 Preset</a>，安装命令： <code>npm install babel-preset-es2015 --save-dev</code>。</p>
+</li>
+<li><p>配置 <code>.babelrc</code> 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    &quot;presets&quot;: [&quot;es2015&quot;]</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>babel-node：ES6 的 REPL 环境<ul>
+<li>不用单独安装，随 <code>babel-cli</code> 一起安装。</li>
+<li>命令行执行： <code>babel-node</code> （需要全局安装 babel-cli）</li>
+<li>也可项目中安装后配置 package.json 来调用。</li>
+</ul>
+</li>
+<li>babel-core：Babel 转码 API<ul>
+<li>使用<code>npm install babel-core --save</code>安装后，在 nodejs 文件中引入模块调用 transform、transformFile 等 API 进行转换输出。</li>
+</ul>
+</li>
+<li>babel-polyfill：ES6 转码扩展<ul>
+<li>Babel 默认只转换新的 JavaScript 句法，而不转换新的 API，如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的静态方法等（如Object.assign）。</li>
+<li>详细使用可查看 <a href="https://babeljs.io/docs/usage/polyfill/" target="_blank" rel="noopener">https://babeljs.io/docs/usage/polyfill/</a> 。</li>
+</ul>
+</li>
+<li><a href="https://babeljs.io/repl/" target="_blank" rel="noopener">在线转换工具</a></li>
+</ul>
+<h2 id="有关-ECMAScript-7"><a href="#有关-ECMAScript-7" class="headerlink" title="有关 ECMAScript 7"></a>有关 ECMAScript 7</h2><ul>
+<li>2013年3月，ES6的草案封闭不再接受新功能。新的功能将被加入ES7。</li>
+<li>详细可查看：<a href="https://github.com/tc39/ecma262" target="_blank" rel="noopener">https://github.com/tc39/ecma262</a></li>
+<li>任何人都可以向TC39提案，从提案到变成正式标准，需要经历五个阶段：<ul>
+<li>Stage 0 - Strawman（展示阶段）</li>
+<li>Stage 1 - Proposal（征求意见阶段）</li>
+<li><strong>Stage 2 - Draft（草案阶段）</strong></li>
+<li>Stage 3 - Candidate（候选人阶段）</li>
+<li>Stage 4 - Finished（定案阶段）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://es6.ruanyifeng.com/#docs/intro" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/intro</a></li>
+<li><a href="https://babeljs.io" target="_blank" rel="noopener">https://babeljs.io</a></li>
+<li><a href="http://baike.baidu.com/link?url=k7Ki5UslfkCYZNPvf1WbwR7U6cqPyQQrUtae_EiPiyjpaz0fcqz3ZXKQfIw3CJfKdtpbQVF0spa1V3fWKNMXQK" target="_blank" rel="noopener">http://baike.baidu.com/link?url=k7Ki5UslfkCYZNPvf1WbwR7U6cqPyQQrUtae_EiPiyjpaz0fcqz3ZXKQfIw3CJfKdtpbQVF0spa1V3fWKNMXQK</a></li>
+<li><a href="https://en.wikipedia.org/wiki/ECMAScript" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/ECMAScript</a></li>
+</ul>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/blog/tags/es6/" rel="tag"># es6</a>
+          
+            <a href="/blog/tags/js/" rel="tag"># js</a>
+          
+            <a href="/blog/tags/ecmascript/" rel="tag"># ecmascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/04/26/365plan.html" rel="next" title="365plan">
+                <i class="fa fa-chevron-left"></i> 365plan
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/05/05/es6-learn-2.html" rel="prev" title="ES6学习笔记(2)：变量声明--ES6变量(let)与常量(const)">
+                ES6学习笔记(2)：变量声明--ES6变量(let)与常量(const) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">闫威</p>
+              <div class="site-description motion-element" itemprop="description">没事瞎写写</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/blog/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/blog/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yemoo" title="GitHub &rarr; https://github.com/yemoo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/yemoo" title="Twitter &rarr; https://twitter.com/yemoo" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript-与-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 与 JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript-简要历史"><span class="nav-number">2.</span> <span class="nav-text">ECMAScript 简要历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持情况"><span class="nav-number">3.</span> <span class="nav-text">支持情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6相关应用工具"><span class="nav-number">4.</span> <span class="nav-text">ES6相关应用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关-ECMAScript-7"><span class="nav-number">5.</span> <span class="nav-text">有关 ECMAScript 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">闫威</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.2.0</div>
+        
+
+
+
+
+
+
+  <div style="display: none">
+    <script src="//s95.cnzz.com/z_stat.php?id=1254881354&web_id=1254881354"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/blog/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/blog/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+
+
+  <script src="/blog/js/utils.js?v=7.2.0"></script>
+
+  <script src="/blog/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/blog/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/blog/js/scrollspy.js?v=7.2.0"></script>
+<script src="/blog/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
